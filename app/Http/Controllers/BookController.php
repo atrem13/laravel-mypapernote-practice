@@ -10,9 +10,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $books = Book::all();
@@ -20,9 +17,7 @@ class BookController extends Controller
         return view('book.index')->with('books', $books);
     }
 
-    /**
-     * Import function
-     */
+
     public function import(Request $request)
     {
         if ($request->file('imported_file')) {
@@ -32,9 +27,6 @@ class BookController extends Controller
     }
 
 
-    /**
-     * Export function
-     */
     public function export()
     {
         return Excel::download(new BooksExport(), 'books.xlsx');
